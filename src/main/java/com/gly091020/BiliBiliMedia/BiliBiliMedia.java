@@ -8,6 +8,7 @@ import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.fml.ModContainer;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,9 +24,13 @@ public class BiliBiliMedia {
     public static HttpServer server;
     public static final UUID _5112151111121 = UUID.fromString("91bd580f-5f17-4e30-872f-2e480dd9a220");
 
+    public BiliBiliMedia() {
+        this(ModLoadingContext.get().getActiveContainer());
+    }
+
     public BiliBiliMedia(ModContainer container) {
         AutoConfig.register(BiliBiliMediaConfig.class, GsonConfigSerializer::new);
-        BiliBiliMediaConfig config = AutoConfig.getConfigHolder(BiliBiliMediaConfig.class).getConfig();
+        config = AutoConfig.getConfigHolder(BiliBiliMediaConfig.class).getConfig();
         container.registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class,
             () -> new ConfigScreenHandler.ConfigScreenFactory((mc, parent) -> {
                 return AutoConfig.getConfigScreen(BiliBiliMediaConfig.class, parent).get();
