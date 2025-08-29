@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.gly091020.BiliBiliMedia.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "IHateWaterMediaMixin",
+    "NetworkAPIMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
