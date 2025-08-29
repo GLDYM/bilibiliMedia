@@ -6,7 +6,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
 import net.minecraft.client.Minecraft;
-import net.neoforged.fml.loading.FMLPaths;
+import net.minecraftforge.fml.loading.FMLPaths;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.File;
@@ -93,7 +93,7 @@ public class BilibiliMediaUtil {
     }
 
     public static boolean isGLY(){
-        return Objects.equal(BiliBiliMedia._5112151111121, Minecraft.getInstance().getGameProfile().getId());
+        return Objects.equal(BiliBiliMedia._5112151111121, Minecraft.getInstance().player.getGameProfile().getId());
     }
 
     public static void tryBBDown(){

@@ -6,9 +6,9 @@ import com.gly091020.BiliBiliMedia.util.SimpleFileServer;
 import com.sun.net.httpserver.HttpServer;
 import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.serializer.GsonConfigSerializer;
-import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import net.minecraftforge.client.ConfigScreenHandler;
+import net.minecraftforge.fml.ModContainer;
+import net.minecraftforge.fml.common.Mod;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,9 +25,11 @@ public class BiliBiliMedia {
 
     public BiliBiliMedia(ModContainer container) {
         AutoConfig.register(BiliBiliMediaConfig.class, GsonConfigSerializer::new);
-        config = AutoConfig.getConfigHolder(BiliBiliMediaConfig.class).getConfig();
-        container.registerExtensionPoint(IConfigScreenFactory.class, (mc, parent) ->
-                BiliBiliMediaConfig.getConfigScreen(parent));
+        BiliBiliMediaConfig config = AutoConfig.getConfigHolder(BiliBiliMediaConfig.class).getConfig();
+        container.registerExtensionPoint(ConfigScreenHandler.ConfigScreenFactory.class,
+            () -> new ConfigScreenHandler.ConfigScreenFactory((mc, parent) -> {
+                return AutoConfig.getConfigScreen(BiliBiliMediaConfig.class, parent).get();
+            }));
         try {
             server = SimpleFileServer.startServer();
         } catch (IOException e) {

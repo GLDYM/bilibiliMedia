@@ -44,7 +44,7 @@ public class BilibiliPatch extends AbstractPatch {
             BiliBiliMedia.LOGGER.error("下载成功，但找不到文件");
             throw new FixingURLException(uri, new RuntimeException("下载成功但找不到文件"));
         }
-        outFile = Arrays.asList(l).getFirst();
+        outFile = Arrays.asList(l).get(0);
         BilibiliMediaUtil.updateVideoFile(uri.toString(), outFile);
         return new Result(BilibiliMediaUtil.getUri(outFile), false, false);
     }

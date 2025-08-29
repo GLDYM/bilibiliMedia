@@ -3,6 +3,7 @@
   "minVersion": "0.8",
   "package": "com.gly091020.BiliBiliMedia.mixin",
   "compatibilityLevel": "JAVA_17",
+  "refmap": "bilibili_media.refmap.json",
   "mixins": [
     "IHateWaterMediaMixin",
     "NetworkAPIMixin"
@@ -11,8 +12,5 @@
   ],
   "injectors": {
     "defaultRequire": 1
-  },
-  "overwrites": {
-    "requireAnnotations": true
   }
 }

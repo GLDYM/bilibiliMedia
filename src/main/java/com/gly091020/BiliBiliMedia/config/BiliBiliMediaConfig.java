@@ -24,7 +24,7 @@ public class BiliBiliMediaConfig implements ConfigData {
         ConfigBuilder builder = ConfigBuilder.create()
                 .setParentScreen(parent)
                 .setTitle(Component.translatable("title.bilibili_media.config"))
-                .setDefaultBackgroundTexture(ResourceLocation.fromNamespaceAndPath(BiliBiliMedia.ModID,  BilibiliMediaUtil.isGLY() ? "textures/gui/gly091020.png" : "icon.png"));
+                .setDefaultBackgroundTexture(new ResourceLocation(BiliBiliMedia.ModID,  BilibiliMediaUtil.isGLY() ? "textures/gui/gly091020.png" : "icon.png"));
         ConfigCategory general = builder.getOrCreateCategory(Component.translatable("title.bilibili_media.config"));
         ConfigEntryBuilder entryBuilder = builder.entryBuilder();
         general.addEntry(entryBuilder.startBooleanToggle(Component.translatable("config.bilibili_media.enable"), BiliBiliMedia.config.enable)
